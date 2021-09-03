@@ -1,0 +1,12 @@
+<% if book_comment.errors.any? %>
+  <p><%= book_comment.errors.count %>件のエラーが発生しました</p>
+  <% book_comment.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>
+<div class="new-comment">
+<%= form_with(model:[book, book_comment], local: true) do |f| %>
+  <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
+  <%= f.submit "送信する" %>
+<% end %>
+</div>
